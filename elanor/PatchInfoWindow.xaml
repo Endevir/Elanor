@@ -1,0 +1,57 @@
+﻿<Window x:Class="Elanor.PatchInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Elanor"
+        mc:Ignorable="d"
+        Title="PatchInfoWindow" 
+        Height="360" 
+        Width="800" 
+        ShowInTaskbar="False" 
+        AllowsTransparency="True" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterOwner"
+        MouseLeftButtonDown="PatchInfoWindow_OnMouseLeftButtonDown">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/goodWindow.png"/>
+    </Window.Background>
+
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="10"/>
+    </Window.Effect>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="TextBlockTitle" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" Style="{StaticResource OuterGlowText}" FontFamily="Segoe UI Black" FontWeight="Normal" Foreground="White"/>
+        <TextBlock x:Name="TextBlockDescription" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" Style="{StaticResource OuterGlowText}" FontStyle="Italic" FontFamily="Segoe UI Semibold" FontWeight="Normal" Foreground="White"/>
+        <TextBlock x:Name="TextBlockVersion" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource OuterGlowText}" FontFamily="Segoe UI Semibold" FontWeight="Normal" Foreground="White"/>
+        <TextBlock x:Name="TextBlockAuthor" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Style="{StaticResource OuterGlowText}" FontFamily="Segoe UI Semibold" FontWeight="Normal" Foreground="White"/>
+        <TextBlock x:Name="TextBlockLink" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Style="{StaticResource OuterGlowText}" FontStyle="Italic">            
+            <Hyperlink
+                x:Name="HyperlinkLink" NavigateUri="translate.lotros.ru" RequestNavigate="Hyperlink_OnRequestNavigate">
+                <TextBlock x:Name="HyperlinkText" Text="Подробности на официальной странице." FontSize="14" FontFamily="Segoe UI Semibold" FontStyle="Normal" FontWeight="Normal" Foreground="White"/>                
+            </Hyperlink>
+        </TextBlock>
+
+    </Grid>
+</Window>

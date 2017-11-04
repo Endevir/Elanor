@@ -1,0 +1,197 @@
+﻿<Window x:Class="Elanor.SetupWindow"
+        x:Name="ThisWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Elanor"
+        xmlns:misc="clr-namespace:Elanor.Misc"
+        mc:Ignorable="d"
+        Title="SetupWindow" 
+        Height="360" 
+        Width="800" 
+        AllowsTransparency="True" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterOwner" 
+        ShowInTaskbar="False">
+
+    <Window.Resources>
+        <Style x:Key="GroupBoxBorder" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="1"/>
+                        <GradientStop x:Name="GradientStopLeft" Color="Black"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
+        <Style x:Key="SetupGroupBox" TargetType="{x:Type GroupBox}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GroupBox}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="6"/>
+                            </Grid.RowDefinitions>
+                            <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="4" Grid.Column="0" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3"/>
+                            <Border Grid.ColumnSpan="4" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3" Style="{StaticResource GroupBoxBorder}">
+                                <Border.OpacityMask>
+                                    <MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
+                                        <Binding ElementName="Header" Path="ActualWidth"/>
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                    </MultiBinding>
+                                </Border.OpacityMask>
+                            </Border>
+                            <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Grid.Row="0" Grid.RowSpan="2">
+                                <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                            <ContentPresenter Grid.ColumnSpan="2" Grid.Column="1" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="10"/>
+    </Window.Effect>
+
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/someWindow.png"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="260" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox x:Name="groupBox" 
+                  Header="Настройки" 
+                  Margin="0,0,77,0" 
+                  BorderBrush="{x:Null}" Grid.Column="1" Grid.Row="1" Style="{DynamicResource SetupGroupBox}" FontSize="14" FontFamily="Segoe UI Semibold">
+            <StackPanel Margin="0">
+                <CheckBox x:Name="CheckBoxDownloadOnLaunch" 
+                  Content="Автозагрузка" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  IsEnabled="False" 
+                  FontSize="14" 
+                  IsChecked="{misc:SettingBinding AutoDownload}" ToolTip="Автоматически загружать обновления патчей при старте программы" ToolTipService.ShowOnDisabled="True"/>
+                <CheckBox x:Name="CheckBoxAutoApply" 
+                  Content="Автоустановка" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  FontSize="14" 
+                  IsEnabled="False"
+                  IsChecked="{misc:SettingBinding AutoApply}" ToolTip="Автоматически устанавливать патчи" ToolTipService.ShowOnDisabled="True"/>
+                <CheckBox x:Name="CheckBoxSolidOnly" 
+                  Content="Только релизы" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  FontSize="14"
+                  IsChecked="{misc:SettingBinding SolidOnly}" IsEnabled="False" ToolTip="При загрузке патчей игнорировать мелкие наработки" ToolTipService.ShowOnDisabled="True"/>
+                <CheckBox x:Name="CheckBoxMultithreadedDownload" 
+                  Content="Мультипоточно" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  FontSize="14"
+                  IsChecked="{misc:SettingBinding MultithreadedDownload}" ToolTip="Загружать в несколько потоков (не для слабых компьютеров)" ToolTipService.ShowOnDisabled="True"/>
+                <CheckBox x:Name="CheckBoxAutoClean" 
+                  Content="Автоочистка" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  FontSize="14"
+                  IsChecked="{misc:SettingBinding AutoClean}" ToolTip="Автоматически удалять устаревшие патчи" ToolTipService.ShowOnDisabled="True"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox x:Name="groupBox1" Header="Загружаю" BorderBrush="{x:Null}" Grid.Column="3" Grid.Row="1" Style="{DynamicResource SetupGroupBox}" FontSize="14" FontFamily="Segoe UI Semibold" Margin="0,0,98,0">
+            <StackPanel Margin="0,-2,0,-10">
+                <CheckBox x:Name="CheckBoxTexts" 
+                  Content="тексты" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  IsChecked="{misc:SettingBinding SubscribeTexts}" FontSize="13" Checked="CheckBoxSubscribe_OnChecked"/>
+                <CheckBox x:Name="CheckBoxSounds" 
+                  Content="озвучку" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  IsChecked="{misc:SettingBinding SubscribeSounds}" FontSize="13" Checked="CheckBoxSubscribe_OnChecked"/>
+                <CheckBox x:Name="CheckBoxMaps" 
+                  Content="карты" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  IsChecked="{misc:SettingBinding SubscribeMaps}" FontSize="13" Checked="CheckBoxSubscribe_OnChecked"/>
+                <CheckBox x:Name="CheckBoxFonts" 
+                  Content="шрифты" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  IsEnabled="False"
+                  IsChecked="{misc:SettingBinding SubscribeFonts}" FontSize="13" ToolTip="Шрифты должны быть установлены для корректного отображения русских текстов" ToolTipService.ShowOnDisabled="True" Checked="CheckBoxSubscribe_OnChecked"/>
+                <CheckBox x:Name="CheckBoxVideos" 
+                  Content="ролики" 
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" 
+                  IsEnabled="False"
+                  IsChecked="{misc:SettingBinding SubscribeVideos}" FontSize="13" ToolTip="Игровые видеоролики (в разработке)" ToolTipService.ShowOnDisabled="True" Checked="CheckBoxSubscribe_OnChecked"/>
+                <CheckBox x:Name="CheckBoxLoadscreens" 
+                  Content="заставки" 
+                  HorizontalAlignment="Left" 
+                  Margin="0,0,-4,0" 
+                  VerticalAlignment="Top" 
+                  IsChecked="{misc:SettingBinding SubscribeLoadscreens}" FontSize="13" ToolTip="Внутриигровые загрузочные экраны" Checked="CheckBoxSubscribe_OnChecked"/>
+                <CheckBox x:Name="CheckBoxTextures" 
+                    Content="текстуры" 
+                    HorizontalAlignment="Left" 
+                    Margin="0,0,-4,0" 
+                    VerticalAlignment="Top" 
+                    IsChecked="{misc:SettingBinding SubscribeTextures}" 
+                    FontSize="13" 
+                    ToolTip="Альтернативные текстуры исправляют некоторые проблемы локализации" 
+                    ToolTipService.ShowOnDisabled="True"
+                    Checked="CheckBoxSubscribe_OnChecked" 
+                    IsEnabled="False"/>
+            </StackPanel>
+        </GroupBox>
+
+        <Button x:Name="ButtonClose" 
+                Grid.ColumnSpan="3" 
+                Content="Готово, выпустите меня" 
+                Grid.Column="1" 
+                Grid.Row="2" 
+                Background="{x:Null}" 
+                BorderBrush="{x:Null}" 
+                HorizontalContentAlignment="Center"
+                Style="{StaticResource MessageButton}"
+                Click="ButtonClose_OnClick" FontWeight="Normal" FontSize="14" FontFamily="Segoe UI Black"/>
+    </Grid>
+</Window>

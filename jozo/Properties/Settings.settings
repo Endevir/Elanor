@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="prelauncher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UrlVersionInfo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://translate.lotros.ru/upload/launcher/info.txt</Value>
+    </Setting>
+    <Setting Name="UrlUpdate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://translate.lotros.ru/upload/launcher/launcher.zip</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

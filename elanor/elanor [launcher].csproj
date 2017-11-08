@@ -239,15 +239,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\shared\Unmanaged\DatExport.dll">
-      <Link>Unmanaged\DatExport.dll</Link>
-    </Content>
-    <Content Include="..\shared\Unmanaged\msvcr71.dll">
-      <Link>Unmanaged\msvcr71.dll</Link>
-    </Content>
-    <Content Include="..\shared\Unmanaged\zlib1T.dll">
-      <Link>Unmanaged\zlib1T.dll</Link>
-    </Content>
+    <None Include="..\shared\Unmanaged\DatExport.dll">
+      <Link>DatExport.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shared\Unmanaged\msvcr71.dll">
+      <Link>msvcr71.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shared\Unmanaged\zlib1T.dll">
+      <Link>zlib1T.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <RootContent Include="TextOutput\readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </RootContent>

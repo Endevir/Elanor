@@ -17,250 +17,250 @@
         Loaded="MainWindow_OnLoaded"
         x:Name="MainElanorWindow">
 
-  <Window.Background>
-    <ImageBrush ImageSource="Resources/background.png"/>
-  </Window.Background>
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/background.png"/>
+    </Window.Background>
 
-  <Window.Resources>
+    <Window.Resources>
 
-    <Style x:Key="AwesomeButton" TargetType="{x:Type Button}">
-      <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="FontSize" Value="14"></Setter>
-      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="BorderBrush" Value="#FF0B8D52"/>
-      <Setter Property="Foreground" Value="#00FFFFFF"/>
-      <Setter Property="BorderThickness" Value="0,1"/>
-      <Setter Property="HorizontalContentAlignment" Value="Right"/>
-      <Setter Property="VerticalContentAlignment" Value="Center"/>
-      <Setter Property="Padding" Value="1"/>
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="{x:Type Button}">
-            <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-              <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-              <Border.BorderBrush>
-                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                  <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="1"/>
-                  <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
-                </LinearGradientBrush>
-              </Border.BorderBrush>
-            </Border>
-            <ControlTemplate.Triggers>
-              <EventTrigger RoutedEvent="Control.MouseEnter">
-                <BeginStoryboard>
-                  <Storyboard >
-                    <ColorAnimation Duration="0:0:0.2" 
+        <Style x:Key="AwesomeButton" TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#FF0B8D52"/>
+            <Setter Property="Foreground" Value="#00FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                    <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="1"/>
+                                    <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Control.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <ColorAnimation Duration="0:0:0.2" 
                                                         To="#FF0B8D52" 
                                                         Storyboard.TargetName="GradientStopRight"
                                                         Storyboard.TargetProperty="Color"/>
-                    <ColorAnimation Duration="0:0:1" 
+                                        <ColorAnimation Duration="0:0:1" 
                                                         To="#00000000" 
                                                         Storyboard.TargetName="GradientStopLeft"
                                                         Storyboard.TargetProperty="Color"/>
-                  </Storyboard>
-                </BeginStoryboard>
-              </EventTrigger>
-              <EventTrigger RoutedEvent="Control.MouseLeave">
-                <BeginStoryboard>
-                  <Storyboard >
-                    <ColorAnimation Duration="0:0:0.2" 
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Control.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <ColorAnimation Duration="0:0:0.2" 
                                                         To="#00000000" 
                                                         Storyboard.TargetName="GradientStopRight"
                                                         Storyboard.TargetProperty="Color"/>
-                    <ColorAnimation Duration="0:0:1" 
+                                        <ColorAnimation Duration="0:0:1" 
                                                         To="#FF0B8D52" 
                                                         Storyboard.TargetName="GradientStopLeft"
                                                         Storyboard.TargetProperty="Color"/>
-                  </Storyboard>
-                </BeginStoryboard>
-              </EventTrigger>
-              <!--<Trigger Property="IsDefaulted" Value="true">
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <!--<Trigger Property="IsDefaulted" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>-->
-              <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF0B8D52"/>
-              </Trigger>
-              <Trigger Property="IsMouseOver" Value="false">
-                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#00FFFFFF"/>
-              </Trigger>
-              <Trigger Property="IsPressed" Value="true">
-                <Setter Property="RenderTransform" >
-                  <Setter.Value>
-                    <TranslateTransform Y="1.0" />
-                  </Setter.Value>
-                </Setter>
-              </Trigger>
-              <!--<Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF0B8D52"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="false">
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#00FFFFFF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="RenderTransform" >
+                                    <Setter.Value>
+                                        <TranslateTransform Y="1.0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <!--<Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                             </Trigger>-->
-            </ControlTemplate.Triggers>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
-    <Style x:Key="GroupBoxBorder" TargetType="Border">
-      <Setter Property="BorderThickness" Value="1"/>
-      <Setter Property="BorderBrush">
-        <Setter.Value>
-          <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-            <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="0.75"/>
-            <GradientStop x:Name="GradientStop" Color="#FF0B8D52" Offset="1"/>
-            <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
-          </LinearGradientBrush>
-        </Setter.Value>
-      </Setter>
-      <Setter Property="Effect">
-        <Setter.Value>
-          <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Black"/>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
-    <Style x:Key="CouponButton" TargetType="{x:Type Button}">
-      <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="BorderThickness" Value="1"/>
-      <Setter Property="HorizontalContentAlignment" Value="Right"/>
-      <Setter Property="VerticalContentAlignment" Value="Center"/>
-      <Setter Property="Padding" Value="1"/>
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="{x:Type Button}">
-            <Border x:Name="border" CornerRadius="5" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Style="{StaticResource GroupBoxBorder}">
-              <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-              <Trigger Property="IsPressed" Value="true">
-                <Setter Property="RenderTransform" >
-                  <Setter.Value>
-                    <TranslateTransform Y="1.0" />
-                  </Setter.Value>
-                </Setter>
-              </Trigger>
-            </ControlTemplate.Triggers>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
-    <Style x:Key="GridPatchesBorderLeft" TargetType="Border">
-      <Setter Property="BorderThickness" Value="0,0,0,1"/>
-      <Setter Property="BorderBrush">
-        <Setter.Value>
-          <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-            <GradientStop x:Name="GradientStopRight" Color="#00000000"/>
-            <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52" Offset="1"/>
-          </LinearGradientBrush>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
-    <Style x:Key="GridPatchesBorderRight" TargetType="Border">
-      <Setter Property="BorderThickness" Value="0,0,0,1"/>
-      <Setter Property="BorderBrush">
-        <Setter.Value>
-          <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-            <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="1"/>
-            <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
-          </LinearGradientBrush>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
-    <Style x:Key="GridPatcheHyperlink" TargetType="Hyperlink">
-      <EventSetter Event="RequestNavigate" Handler="Hyperlink_OnRequestNavigate"/>
-    </Style>
-
-    <Style TargetType="TextBlock" x:Key="GridPatchesText">
-      <Setter Property="VerticalAlignment" Value="Center"/>
-      <Setter Property="HorizontalAlignment" Value="Right"/>
-      <Setter Property="TextWrapping" Value="Wrap"/>
-      <Setter Property="FontSize" Value="14"/>
-      <Setter Property="Foreground">
-        <Setter.Value>
-          <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-            <GradientStop x:Name="GradientStopRight" Color="White"/>
-            <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52" Offset="1"/>
-          </LinearGradientBrush>
-        </Setter.Value>
-      </Setter>
-
-      <Style.Resources>
-        <Style TargetType="Hyperlink" BasedOn="{StaticResource GridPatcheHyperlink}">
-          <Setter Property="Foreground" Value="{Binding Foreground,RelativeSource={RelativeSource FindAncestor,AncestorType=TextBlock}}"/>
-          <Setter Property="TextBlock.TextDecorations" Value="{x:Null}"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
-      </Style.Resources>
 
-      <Style.Triggers>
-        <DataTrigger Binding="{Binding Path=.}" Value="A">
-          <Setter Property="Foreground" Value="Red" />
-        </DataTrigger>
-        <DataTrigger Binding="{Binding Path=.}" Value="B">
-          <Setter Property="Foreground" Value="Green" />
-        </DataTrigger>
-        <DataTrigger Binding="{Binding Path=.}" Value="C">
-          <Setter Property="Foreground" Value="Blue" />
-        </DataTrigger>
-      </Style.Triggers>
-    </Style>
+        <Style x:Key="GroupBoxBorder" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="0.75"/>
+                        <GradientStop x:Name="GradientStop" Color="#FF0B8D52" Offset="1"/>
+                        <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Black"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <Style TargetType="Label" x:Key="GridPatchesLabel">
-      <Setter Property="HorizontalContentAlignment" Value="Left"/>
-      <Setter Property="Background" Value="{x:Null}"/>
-      <Setter Property="VerticalAlignment" Value="Center"/>
-      <Setter Property="FontSize" Value="14"/>
-      <Setter Property="Foreground">
-        <Setter.Value>
-          <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-            <GradientStop x:Name="GradientStopRight" Color="White" Offset="1"/>
-            <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
-          </LinearGradientBrush>
-        </Setter.Value>
-      </Setter>
-    </Style>
+        <Style x:Key="CouponButton" TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Style="{StaticResource GroupBoxBorder}">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="RenderTransform" >
+                                    <Setter.Value>
+                                        <TranslateTransform Y="1.0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <Style x:Key="TextBlockStyle1" TargetType="{x:Type TextBlock}">
-      <Setter Property="VerticalAlignment" Value="Center"/>
-      <Setter Property="HorizontalAlignment" Value="Center"/>
-      <Setter Property="TextWrapping" Value="Wrap"/>
-      <Setter Property="FontSize" Value="11"/>
-      <Setter Property="Foreground" Value="#FF0B8D52"/>
-    </Style>
+        <Style x:Key="GridPatchesBorderLeft" TargetType="Border">
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop x:Name="GradientStopRight" Color="#00000000"/>
+                        <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-  </Window.Resources>
+        <Style x:Key="GridPatchesBorderRight" TargetType="Border">
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop x:Name="GradientStopRight" Color="#00000000" Offset="1"/>
+                        <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-  <Window.Effect>
-    <DropShadowEffect/>
-  </Window.Effect>
+        <Style x:Key="GridPatcheHyperlink" TargetType="Hyperlink">
+            <EventSetter Event="RequestNavigate" Handler="Hyperlink_OnRequestNavigate"/>
+        </Style>
 
-  <Grid>
+        <Style TargetType="TextBlock" x:Key="GridPatchesText">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop x:Name="GradientStopRight" Color="White"/>
+                        <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
 
-    <Grid.RowDefinitions>
-      <RowDefinition Height="175"/>
-      <RowDefinition Height="0.75*"/>
-      <RowDefinition Height="0.75*"/>
-      <RowDefinition Height="0.75*"/>
-      <RowDefinition Height="0.75*"/>
-      <RowDefinition Height="0.75*"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
+            <Style.Resources>
+                <Style TargetType="Hyperlink" BasedOn="{StaticResource GridPatcheHyperlink}">
+                    <Setter Property="Foreground" Value="{Binding Foreground,RelativeSource={RelativeSource FindAncestor,AncestorType=TextBlock}}"/>
+                    <Setter Property="TextBlock.TextDecorations" Value="{x:Null}"/>
+                </Style>
+            </Style.Resources>
 
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="45" />
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="1.4*" />
-      <ColumnDefinition Width="0.5*" />
-      <ColumnDefinition Width="0.5*" />
-      <ColumnDefinition Width="45" />
-    </Grid.ColumnDefinitions>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=.}" Value="A">
+                    <Setter Property="Foreground" Value="Red" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=.}" Value="B">
+                    <Setter Property="Foreground" Value="Green" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=.}" Value="C">
+                    <Setter Property="Foreground" Value="Blue" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
 
-    <Image x:Name="Locker" 
+        <Style TargetType="Label" x:Key="GridPatchesLabel">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop x:Name="GradientStopRight" Color="White" Offset="1"/>
+                        <GradientStop x:Name="GradientStopLeft" Color="#FF0B8D52"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBlockStyle1" TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="#FF0B8D52"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="175"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.4*" />
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="45" />
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="Locker" 
                gif:ImageBehavior.AnimatedSource="Resources/lockRingBlack.gif" 
                Margin="151.8,-212,0,-178.221" 
                Stretch="None" 
@@ -270,12 +270,12 @@
                Grid.Row="0"
                Grid.Column="3" 
                Grid.ColumnSpan="3">
-      <Image.Effect>
-        <BlurEffect Radius="3"/>
-      </Image.Effect>
-    </Image>
+            <Image.Effect>
+                <BlurEffect Radius="3"/>
+            </Image.Effect>
+        </Image>
 
-    <TextBlock x:Name="TextBlockLock" 
+        <TextBlock x:Name="TextBlockLock" 
                    Grid.ColumnSpan="4" 
                    TextWrapping="Wrap" 
                    Text="" 
@@ -289,23 +289,23 @@
                    Grid.Column="1" 
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Center">
-      <TextBlock.Effect>
-        <DropShadowEffect/>
-      </TextBlock.Effect>
-    </TextBlock>
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
 
-    <TextBlock x:Name="TextBlockNotice" 
+        <TextBlock x:Name="TextBlockNotice" 
                    Grid.ColumnSpan="4"
                    Text="{Binding ElementName=MainElanorWindow, Path=DowntimeNotice.DowntimeNoticeRu}"  
                    TextAlignment="Center" 
                    FontSize="16"  
                    Style="{StaticResource ServerStatusOffline}"   
-                   Grid.Row="6" 
+                   Grid.Row="5" 
                    Grid.Column="1" 
-                   HorizontalAlignment="Center">
-    </TextBlock>
+                   HorizontalAlignment="Center" Margin="192.667,11.333,76.667,38">
+        </TextBlock>
 
-    <Button x:Name="ButtonGame" 
+        <Button x:Name="ButtonGame" 
                 Content="Запустить игру" 
                 Grid.Column="1" 
                 Grid.Row="1" 
@@ -313,7 +313,7 @@
                 Panel.ZIndex="1"
                 Click="ButtonGame_OnClick"/>
 
-    <Button x:Name="ButtonSetup" 
+        <Button x:Name="ButtonSetup" 
                 Content="Настроить" 
                 Grid.Column="1" 
                 Grid.Row="2" 
@@ -321,7 +321,7 @@
                 Panel.ZIndex="1"
                 Click="ButtonSetup_OnClick"/>
 
-    <Button x:Name="ButtonBug" 
+        <Button x:Name="ButtonBug" 
                 Content="Сообщить об ошибке" 
                 Grid.Column="1" 
                 Grid.Row="3" 
@@ -329,7 +329,7 @@
                 Panel.ZIndex="1"
                 Click="ButtonBug_OnClick"/>
 
-    <Button x:Name="ButtonManual" 
+        <Button x:Name="ButtonManual" 
                 Content="Читать справку" 
                 Grid.Column="1" 
                 Grid.Row="4" 
@@ -337,7 +337,7 @@
                 Panel.ZIndex="1"
                 Click="ButtonManual_OnClick"/>
 
-    <Button x:Name="ButtonAbout" 
+        <Button x:Name="ButtonAbout" 
                 Content="О нас" 
                 Grid.Column="1" 
                 Grid.Row="5" 
@@ -345,7 +345,7 @@
                 Panel.ZIndex="1"
                 Click="ButtonAbout_OnClick"/>
 
-    <Image x:Name="ImageGame" 
+        <Image x:Name="ImageGame" 
                Grid.Column="1" 
                Grid.Row="1"
                Margin="10,0,10,0" 
@@ -355,7 +355,7 @@
                HorizontalAlignment="Left"
                Source="Resources/game.png"/>
 
-    <Image x:Name="ImageSetup" 
+        <Image x:Name="ImageSetup" 
                Grid.Column="1" 
                Grid.Row="2"
                Margin="10,0,10,0" 
@@ -365,7 +365,7 @@
                HorizontalAlignment="Left"
                Source="Resources/setup.png"/>
 
-    <Image x:Name="ImageBug" 
+        <Image x:Name="ImageBug" 
                Grid.Column="1" 
                Grid.Row="3"
                Margin="10,0,10,0" 
@@ -375,7 +375,7 @@
                HorizontalAlignment="Left"
                Source="Resources/bug.png"/>
 
-    <Image x:Name="ImageManual" 
+        <Image x:Name="ImageManual" 
                Grid.Column="1" 
                Grid.Row="4"
                Margin="10,0,10,0" 
@@ -385,7 +385,7 @@
                HorizontalAlignment="Left"
                Source="Resources/manual.png"/>
 
-    <Image x:Name="ImageAbout" 
+        <Image x:Name="ImageAbout" 
                Grid.Column="1" 
                Grid.Row="5"
                Margin="10,0,10,0" 
@@ -395,160 +395,160 @@
                HorizontalAlignment="Left"
                Source="Resources/about.png"/>
 
-    <Grid x:Name="GridPatches" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2">
+        <Grid x:Name="GridPatches" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2">
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="0.31*"/>
-        <ColumnDefinition Width="0.11*"/>
-        <ColumnDefinition Width="0.32*"/>
-      </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.31*"/>
+                <ColumnDefinition Width="0.11*"/>
+                <ColumnDefinition Width="0.32*"/>
+            </Grid.ColumnDefinitions>
 
-      <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
 
-      <TextBlock x:Name="TextBlockTexts" Grid.Column="0" Grid.Row="0" Style="{StaticResource GridPatchesText}">            
+            <TextBlock x:Name="TextBlockTexts" Grid.Column="0" Grid.Row="0" Style="{StaticResource GridPatchesText}">            
                 <Hyperlink
                     NavigateUri="Text">
                     Тексты
                 </Hyperlink>
-      </TextBlock>
+            </TextBlock>
 
-      <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
 
-      <TextBlock x:Name="TextBlockFonts" Grid.Column="0" Grid.Row="1" Style="{StaticResource GridPatchesText}">            
+            <TextBlock x:Name="TextBlockFonts" Grid.Column="0" Grid.Row="1" Style="{StaticResource GridPatchesText}">            
                 <Hyperlink
                     NavigateUri="Font">
                     Шрифты
                 </Hyperlink>
-      </TextBlock>
+            </TextBlock>
 
-      <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
 
-      <TextBlock x:Name="TextBlockSounds" Grid.Column="0" Grid.Row="2" Style="{StaticResource GridPatchesText}">            
+            <TextBlock x:Name="TextBlockSounds" Grid.Column="0" Grid.Row="2" Style="{StaticResource GridPatchesText}">            
                 <Hyperlink
                     NavigateUri="Sound">
                     Озвучка
                 </Hyperlink>
-      </TextBlock>
+            </TextBlock>
 
-      <Border Grid.Row="3" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="3" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
 
-      <TextBlock x:Name="TextBlockLoadscreens" Grid.Column="0" Grid.Row="3" Style="{StaticResource GridPatchesText}">            
+            <TextBlock x:Name="TextBlockLoadscreens" Grid.Column="0" Grid.Row="3" Style="{StaticResource GridPatchesText}">            
                 <Hyperlink
                     NavigateUri="Loadscreen">
                     Загрузочные экраны
                 </Hyperlink>
-      </TextBlock>
+            </TextBlock>
 
-      <Border Grid.Row="4" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="4" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
 
-      <TextBlock x:Name="TextBlockMaps" Grid.Column="0" Grid.Row="4" Style="{StaticResource GridPatchesText}">            
+            <TextBlock x:Name="TextBlockMaps" Grid.Column="0" Grid.Row="4" Style="{StaticResource GridPatchesText}">            
                 <Hyperlink
                     NavigateUri="Image">
                     Карты
                 </Hyperlink>
-      </TextBlock>
+            </TextBlock>
 
-      <TextBlock x:Name="TextBlockVideos" Grid.Column="0" Grid.Row="5" Style="{StaticResource GridPatchesText}">            
+            <TextBlock x:Name="TextBlockVideos" Grid.Column="0" Grid.Row="5" Style="{StaticResource GridPatchesText}">            
                 <Hyperlink
                     NavigateUri="Video">
                     Ролики
                 </Hyperlink>
-      </TextBlock>
+            </TextBlock>
 
-      <Label x:Name="LabelTexts" Grid.Column="2" Grid.Row="0" Style="{StaticResource GridPatchesLabel}"/>
-      <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
-      <Label x:Name="LabelFonts" Grid.Column="2" Grid.Row="1" Style="{StaticResource GridPatchesLabel}"/>
-      <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
-      <Label x:Name="LabelSounds" Grid.Column="2" Grid.Row="2" Style="{StaticResource GridPatchesLabel}"/>
-      <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
-      <Label x:Name="LabelLoadscreens" Grid.Column="2" Grid.Row="3" Style="{StaticResource GridPatchesLabel}"/>
-      <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
-      <Label x:Name="LabelMaps" Grid.Column="2" Grid.Row="4" Style="{StaticResource GridPatchesLabel}"/>
-      <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
-      <Label x:Name="LabelVideos" Grid.Column="2" Grid.Row="5" Style="{StaticResource GridPatchesLabel}"/>
+            <Label x:Name="LabelTexts" Grid.Column="2" Grid.Row="0" Style="{StaticResource GridPatchesLabel}"/>
+            <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
+            <Label x:Name="LabelFonts" Grid.Column="2" Grid.Row="1" Style="{StaticResource GridPatchesLabel}"/>
+            <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
+            <Label x:Name="LabelSounds" Grid.Column="2" Grid.Row="2" Style="{StaticResource GridPatchesLabel}"/>
+            <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
+            <Label x:Name="LabelLoadscreens" Grid.Column="2" Grid.Row="3" Style="{StaticResource GridPatchesLabel}"/>
+            <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
+            <Label x:Name="LabelMaps" Grid.Column="2" Grid.Row="4" Style="{StaticResource GridPatchesLabel}"/>
+            <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource GridPatchesBorderRight}"/>
+            <Label x:Name="LabelVideos" Grid.Column="2" Grid.Row="5" Style="{StaticResource GridPatchesLabel}"/>
+
+        </Grid>
+
+        <Label x:Name="LabelClose" Grid.Column="5" Grid.Row="0" Style="{StaticResource GridPatchesLabel}" MouseLeftButtonDown="LabelClose_OnMouseLeftButtonDown" Margin="14.8,45,10,110.2" Foreground="{x:Null}" Width="20" Height="20" ToolTip="Закрыть" >
+            <Label.Effect>
+                <BlurEffect Radius="1"/>
+            </Label.Effect>
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/close.png"/>
+            </Label.Background>
+        </Label>
+        <TextBlock x:Name="TextBlockVersion" Grid.Column="1" HorizontalAlignment="Left" Height="15" Margin="119.2,70.6,0,0" Grid.Row="6" VerticalAlignment="Top" Width="84" Style="{StaticResource GridPatchesText}" FontSize="11" TextAlignment="Center"/>
+        <Label x:Name="LabelMinimize" Grid.Column="4" Grid.Row="0" Style="{StaticResource GridPatchesLabel}" MouseLeftButtonDown="LabelMinimize_OnMouseLeftButtonDown" Margin="141,45,35,110.2" FontSize="12" Width="20" Height="20" Foreground="{x:Null}" Grid.ColumnSpan="2" Panel.ZIndex="3" ToolTip="Свернуть">
+            <Label.Effect>
+                <BlurEffect Radius="1"/>
+            </Label.Effect>
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/minimize.png"/>
+            </Label.Background>
+        </Label>
+
+        <Grid x:Name="GridServers" Grid.Column="4" Grid.Row="1" Grid.RowSpan="5">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+
+            <TextBlock x:Name="TextBlockServerBelegaer" Text="Belegaer" Grid.Column="0" Grid.Row="0" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Belegaer.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerGwaihir" Text="Gwaihir" Grid.Column="0" Grid.Row="1" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Gwaihir.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerLaurelin" Text="Laurelin" Grid.Column="0" Grid.Row="2" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Laurelin.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerEvernight" Text="Evernight" Grid.Column="0" Grid.Row="3" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Evernight.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerSirannon" Text="Sirannon" Grid.Column="0" Grid.Row="4" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Sirannon.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerArkenstone" Text="Arkenstone" Grid.Column="0" Grid.Row="5" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Arkenstone.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerBrandywine" Text="Brandywine" Grid.Column="0" Grid.Row="6" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Brandywine.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerBullroarer" Text="Bullroarer" Grid.Column="0" Grid.Row="7" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Bullroarer.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerGladden" Text="Gladden" Grid.Column="0" Grid.Row="8" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Gladden.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerLandroval" Text="Landroval" Grid.Column="0" Grid.Row="9" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Landroval.Style}" FontSize="12"/>
+            <TextBlock x:Name="TextBlockServerCrickhollow" Text="Crickhollow" Grid.Column="0" Grid.Row="10" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Crickhollow.Style}" FontSize="12"/>
+
+            <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="3" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="4" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="5" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="6" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="7" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="8" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+            <Border Grid.Row="9" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
+
+        </Grid>
+
+        <Button x:Name="CouponButton" Grid.Column="2" Grid.Row="1" Margin="354,5,119,5" Style="{StaticResource CouponButton}" HorizontalContentAlignment="Center" ToolTip="Нажми, чтобы скопировать" Grid.ColumnSpan="3" Click="CouponButton_OnClick">
+            <StackPanel>
+                <TextBlock Text="Бесплатный купон этой недели" FontSize="12" Margin="0,0,0,5" Style="{StaticResource GridPatchesText}"/>
+                <TextBlock x:Name="CouponText" Text="{Binding ElementName=MainElanorWindow, Path=CouponCode.CouponCode}" FontSize="16" FontWeight="Bold" Style="{StaticResource GridPatchesText}" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <TextBlock x:Name="TextBlockUpdates" Grid.Column="2" HorizontalAlignment="Left" Margin="81,41,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="377" Style="{DynamicResource TextBlockStyle1}" Grid.ColumnSpan="2"/>
 
     </Grid>
-
-    <Label x:Name="LabelClose" Grid.Column="5" Grid.Row="0" Style="{StaticResource GridPatchesLabel}" MouseLeftButtonDown="LabelClose_OnMouseLeftButtonDown" Margin="14.8,45,10,110.2" Foreground="{x:Null}" Width="20" Height="20" ToolTip="Закрыть" >
-      <Label.Effect>
-        <BlurEffect Radius="1"/>
-      </Label.Effect>
-      <Label.Background>
-        <ImageBrush ImageSource="Resources/close.png"/>
-      </Label.Background>
-    </Label>
-    <TextBlock x:Name="TextBlockVersion" Grid.Column="1" HorizontalAlignment="Left" Height="15" Margin="119.2,70.6,0,0" Grid.Row="6" VerticalAlignment="Top" Width="84" Style="{StaticResource GridPatchesText}" FontSize="11" TextAlignment="Center"/>
-    <Label x:Name="LabelMinimize" Grid.Column="4" Grid.Row="0" Style="{StaticResource GridPatchesLabel}" MouseLeftButtonDown="LabelMinimize_OnMouseLeftButtonDown" Margin="141,45,35,110.2" FontSize="12" Width="20" Height="20" Foreground="{x:Null}" Grid.ColumnSpan="2" Panel.ZIndex="3" ToolTip="Свернуть">
-      <Label.Effect>
-        <BlurEffect Radius="1"/>
-      </Label.Effect>
-      <Label.Background>
-        <ImageBrush ImageSource="Resources/minimize.png"/>
-      </Label.Background>
-    </Label>
-
-    <Grid x:Name="GridServers" Grid.Column="4" Grid.Row="1" Grid.RowSpan="5">
-
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
-
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-
-      <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-
-      <TextBlock x:Name="TextBlockServerBelegaer" Text="Belegaer" Grid.Column="0" Grid.Row="0" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Belegaer.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerGwaihir" Text="Gwaihir" Grid.Column="0" Grid.Row="1" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Gwaihir.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerLaurelin" Text="Laurelin" Grid.Column="0" Grid.Row="2" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Laurelin.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerEvernight" Text="Evernight" Grid.Column="0" Grid.Row="3" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Evernight.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerSirannon" Text="Sirannon" Grid.Column="0" Grid.Row="4" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Sirannon.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerArkenstone" Text="Arkenstone" Grid.Column="0" Grid.Row="5" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Arkenstone.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerBrandywine" Text="Brandywine" Grid.Column="0" Grid.Row="6" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Brandywine.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerBullroarer" Text="Bullroarer" Grid.Column="0" Grid.Row="7" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Bullroarer.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerGladden" Text="Gladden" Grid.Column="0" Grid.Row="8" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Gladden.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerLandroval" Text="Landroval" Grid.Column="0" Grid.Row="9" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Landroval.Style}" FontSize="12"/>
-      <TextBlock x:Name="TextBlockServerCrickhollow" Text="Crickhollow" Grid.Column="0" Grid.Row="10" Style="{Binding ElementName=MainElanorWindow, Path=ServerStatus.Crickhollow.Style}" FontSize="12"/>
-
-      <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="3" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="4" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="5" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="6" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="7" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="8" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-      <Border Grid.Row="9" Grid.Column="0" Style="{StaticResource GridPatchesBorderLeft}"/>
-
-    </Grid>
-
-    <Button x:Name="CouponButton" Grid.Column="2" Grid.Row="1" Margin="354,5,119,5" Style="{StaticResource CouponButton}" HorizontalContentAlignment="Center" ToolTip="Нажми, чтобы скопировать" Grid.ColumnSpan="3" Click="CouponButton_OnClick">
-      <StackPanel>
-        <TextBlock Text="Бесплатный купон этой недели" FontSize="12" Margin="0,0,0,5" Style="{StaticResource GridPatchesText}"/>
-        <TextBlock x:Name="CouponText" Text="{Binding ElementName=MainElanorWindow, Path=CouponCode.CouponCode}" FontSize="16" FontWeight="Bold" Style="{StaticResource GridPatchesText}" HorizontalAlignment="Center"/>
-      </StackPanel>
-    </Button>
-    <TextBlock x:Name="TextBlockUpdates" Grid.Column="2" HorizontalAlignment="Left" Margin="81,41,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="377" Style="{DynamicResource TextBlockStyle1}" Grid.ColumnSpan="2"/>
-
-  </Grid>
 </Window>
